@@ -274,7 +274,7 @@ export default class GoogleMapMarkers extends Component {
           WebkitTransition: transitionString,
           MozTransition: transitionString,
           OTransition: transitionString,
-          transition transitionString,
+          transition: transitionString,
 
           WebkitTransform: transformString,
           MozTransform: transformString,
