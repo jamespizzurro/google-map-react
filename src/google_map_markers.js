@@ -241,7 +241,7 @@ export default class GoogleMapMarkers extends Component {
     return this.dimesionsCache_[childKey];
   };
 
-  rerender() {
+  rerender = () => {
     this.forceUpdate();
   };
 
