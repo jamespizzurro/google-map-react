@@ -590,7 +590,7 @@ export default class GoogleMap extends Component {
                 onChildMouseEnter={this_._onChildMouseEnter}
                 onChildMouseLeave={this_._onChildMouseLeave}
                 geoService={this_.geoService_}
-                projectFromLeftTop={false}
+                projectFromLeftTop
                 distanceToMouse={this_.props.distanceToMouse}
                 getHoverDistance={this_._getHoverDistance}
                 dispatcher={this_.markersDispatcher_}
@@ -628,8 +628,8 @@ export default class GoogleMap extends Component {
               this_.googleApiLoadedCalled_ = true;
             }
 
-            //div.style.left = `${ptxRounded.x}px`;
-            //div.style.top = `${ptxRounded.y}px`;
+            div.style.left = `${ptxRounded.x}px`;
+            div.style.top = `${ptxRounded.y}px`;
             if (this_.markersDispatcher_) {
               this_.markersDispatcher_.emit('kON_CHANGE');
             }
@@ -717,8 +717,8 @@ export default class GoogleMap extends Component {
           this._onChildMouseMove();
 
           this_.dragTime_ = 0;
-          //div.style.left = `${ptxRounded.x}px`;
-          //div.style.top = `${ptxRounded.y}px`;
+          div.style.left = `${ptxRounded.x}px`;
+          div.style.top = `${ptxRounded.y}px`;
           if (this_.markersDispatcher_) {
             this_.markersDispatcher_.emit('kON_CHANGE');
             if (this_.fireMouseEventOnIdle_) {
