@@ -71,8 +71,23 @@ export default class GoogleMapMarkers extends Component {
         );
     }
 
-    return !shallowEqual(this.props, nextProps) ||
+    return latLngString !== this.state.latLngString ||
+      !shallowEqual(this.props, nextProps) ||
       !shallowEqual(this.state, nextState);
+  }
+
+  componentDidUpdate() {
+    let latLngString = '';
+
+    React.Children.forEach(this.state.children, (child, childIndex) => {
+      if (child && child.props.lat && child.props.lng) {
+        latLngString += child.props.lat.toString() + child.props.lng.toString();
+      }
+    });
+
+    this.setState({
+      latLngString
+    });
   }
 
   componentWillUnmount() {
