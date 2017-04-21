@@ -571,10 +571,16 @@ export default class GoogleMap extends Component {
 
             const div = document.createElement('div');
             this.div = div;
+            const transformString = `translate(0, 0)`;
+            div.style = {
+              WebkitTransform: transformString,
+              MozTransform: transformString,
+              msTransform: transformString,
+              Otransform: transformString,
+              transform: transformString
+            };
             div.style.backgroundColor = 'transparent';
             div.style.position = 'absolute';
-            div.style.left = '0px';
-            div.style.top = '0px';
             div.style.width = K_MAX_WIDTH; // prevents some chrome draw defects
             div.style.height = K_MAX_HEIGHT;
 
@@ -628,8 +634,14 @@ export default class GoogleMap extends Component {
               this_.googleApiLoadedCalled_ = true;
             }
 
-            div.style.left = `${ptxRounded.x}px`;
-            div.style.top = `${ptxRounded.y}px`;
+            const transformString = `translate(${ptxRounded.x}px, ${ptxRounded.y}px)`;
+            div.style = {
+              WebkitTransform: transformString,
+              MozTransform: transformString,
+              msTransform: transformString,
+              Otransform: transformString,
+              transform: transformString
+            };
             if (this_.markersDispatcher_) {
               this_.markersDispatcher_.emit('kON_CHANGE');
             }
@@ -717,8 +729,14 @@ export default class GoogleMap extends Component {
           this._onChildMouseMove();
 
           this_.dragTime_ = 0;
-          div.style.left = `${ptxRounded.x}px`;
-          div.style.top = `${ptxRounded.y}px`;
+          const transformString = `translate(${ptxRounded.x}px, ${ptxRounded.y}px)`;
+          div.style = {
+            WebkitTransform: transformString,
+            MozTransform: transformString,
+            msTransform: transformString,
+            Otransform: transformString,
+            transform: transformString
+          };
           if (this_.markersDispatcher_) {
             this_.markersDispatcher_.emit('kON_CHANGE');
             if (this_.fireMouseEventOnIdle_) {
