@@ -62,19 +62,6 @@ export default class GoogleMapMarkers extends Component {
     this.state = { ...this._getState(), hoverKey: null };
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    if (this.props.experimental === true) {
-      return !shallowEqual(this.props, nextProps) ||
-        !shallowEqual(
-          omit(this.state, ['hoverKey']),
-          omit(nextState, ['hoverKey'])
-        );
-    }
-
-    return !shallowEqual(this.props, nextProps) ||
-      !shallowEqual(this.state, nextState);
-  }
-
   componentWillUnmount() {
     this.props.dispatcher.removeListener('kON_CHANGE', this._onChangeHandler);
     this.props.dispatcher.removeListener(
