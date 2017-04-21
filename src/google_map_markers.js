@@ -90,7 +90,7 @@ export default class GoogleMapMarkers extends Component {
 
   componentDidUpdate() {
     this.setState({
-      latLngString: this._getLatLngString();
+      latLngString: this._getLatLngString()
     });
   }
 
