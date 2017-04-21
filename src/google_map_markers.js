@@ -62,6 +62,19 @@ export default class GoogleMapMarkers extends Component {
     this.state = { ...this._getState(), hoverKey: null };
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.experimental === true) {
+      return !shallowEqual(this.props, nextProps) ||
+        !shallowEqual(
+          omit(this.state, ['hoverKey']),
+          omit(nextState, ['hoverKey'])
+        );
+    }
+
+    return !shallowEqual(this.props, nextProps) ||
+      !shallowEqual(this.state, nextState);
+  }
+
   componentWillUnmount() {
     this.props.dispatcher.removeListener('kON_CHANGE', this._onChangeHandler);
     this.props.dispatcher.removeListener(
@@ -228,6 +241,10 @@ export default class GoogleMapMarkers extends Component {
     return this.dimesionsCache_[childKey];
   };
 
+  rerender() {
+    this.forceUpdate();
+  };
+
   render() {
     const mainElementStyle = this.props.style || mainStyle;
     this.dimesionsCache_ = {};
@@ -308,6 +325,7 @@ export default class GoogleMapMarkers extends Component {
               $geoService: this.props.geoService,
               $onMouseAllow: this._onMouseAllow,
               $prerender: this.props.prerender,
+              $rerender: this.rerender
             })}
           </div>
         );
