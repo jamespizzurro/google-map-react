@@ -268,13 +268,19 @@ export default class GoogleMapMarkers extends Component {
           this.props.projectFromLeftTop
         );
 
-        const translateString = `translate(${pt.x}px, ${pt.y}px)`;
+        const transitionString = 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms';
+        const transformString = `translate(${pt.x}px, ${pt.y}px)`;
         const stylePtPos = {
-          WebkitTransform: translateString,
-          MozTransform: translateString,
-          msTransform: translateString,
-          Otransform: translateString,
-          transform: translateString
+          WebkitTransition: transitionString,
+          MozTransition: transitionString,
+          OTransition: transitionString,
+          transition transitionString,
+
+          WebkitTransform: transformString,
+          MozTransform: transformString,
+          msTransform: transformString,
+          Otransform: transformString,
+          transform: transformString
         };
 
         let dx = 0;
