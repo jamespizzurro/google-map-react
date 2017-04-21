@@ -62,18 +62,6 @@ export default class GoogleMapMarkers extends Component {
     this.state = { ...this._getState(), hoverKey: null };
   }
 
-  _getLatLngString() {
-    let latLngString = '';
-
-    React.Children.forEach(this.state.children, (child, childIndex) => {
-      if (child && child.props.lat && child.props.lng) {
-        latLngString += child.props.lat.toString() + child.props.lng.toString();
-      }
-    });
-    
-    return latLngString;
-  }
-
   shouldComponentUpdate(nextProps, nextState) {
     if (this.props.experimental === true) {
       return !shallowEqual(this.props, nextProps) ||
@@ -83,15 +71,8 @@ export default class GoogleMapMarkers extends Component {
         );
     }
 
-    return (this.state.latLngString !== this._getLatLngString()) ||
-      !shallowEqual(this.props, nextProps) ||
+    return !shallowEqual(this.props, nextProps) ||
       !shallowEqual(this.state, nextState);
-  }
-
-  componentDidUpdate() {
-    this.setState({
-      latLngString: this._getLatLngString()
-    });
   }
 
   componentWillUnmount() {
