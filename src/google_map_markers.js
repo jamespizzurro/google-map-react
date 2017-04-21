@@ -71,8 +71,7 @@ export default class GoogleMapMarkers extends Component {
         );
     }
 
-    return latLngString !== this.state.latLngString ||
-      !shallowEqual(this.props, nextProps) ||
+    return !shallowEqual(this.props, nextProps) ||
       !shallowEqual(this.state, nextState);
   }
 
