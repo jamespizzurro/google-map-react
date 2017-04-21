@@ -717,8 +717,8 @@ export default class GoogleMap extends Component {
           this._onChildMouseMove();
 
           this_.dragTime_ = 0;
-          div.style.left = `${ptxRounded.x}px`;
-          div.style.top = `${ptxRounded.y}px`;
+          //div.style.left = `${ptxRounded.x}px`;
+          //div.style.top = `${ptxRounded.y}px`;
           if (this_.markersDispatcher_) {
             this_.markersDispatcher_.emit('kON_CHANGE');
             if (this_.fireMouseEventOnIdle_) {
