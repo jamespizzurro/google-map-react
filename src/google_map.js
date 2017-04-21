@@ -628,10 +628,10 @@ export default class GoogleMap extends Component {
               this_.googleApiLoadedCalled_ = true;
             }
 
-            div.style.left = `${ptxRounded.x}px`;
-            div.style.top = `${ptxRounded.y}px`;
+            //div.style.left = `${ptxRounded.x}px`;
+            //div.style.top = `${ptxRounded.y}px`;
             if (this_.markersDispatcher_) {
-              this_.markersDispatcher_.emit('kON_CHANGE');
+              this_.markersDispatcher_.emit('kON_CHANGE', ptxRounded.x, ptxRounded.y);
             }
           },
         });
@@ -717,10 +717,10 @@ export default class GoogleMap extends Component {
           this._onChildMouseMove();
 
           this_.dragTime_ = 0;
-          div.style.left = `${ptxRounded.x}px`;
-          div.style.top = `${ptxRounded.y}px`;
+          //div.style.left = `${ptxRounded.x}px`;
+          //div.style.top = `${ptxRounded.y}px`;
           if (this_.markersDispatcher_) {
-            this_.markersDispatcher_.emit('kON_CHANGE');
+            this_.markersDispatcher_.emit('kON_CHANGE', ptxRounded.x, ptxRounded.y);
             if (this_.fireMouseEventOnIdle_) {
               this_.markersDispatcher_.emit('kON_MOUSE_POSITION_CHANGE');
             }
