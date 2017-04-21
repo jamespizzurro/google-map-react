@@ -92,13 +92,15 @@ export default class GoogleMapMarkers extends Component {
     updateCounter: this.props.dispatcher.getUpdateCounter(),
   });
 
-  _onChangeHandler = () => {
+  _onChangeHandler = (x, y) => {
     if (!this.dimesionsCache_) {
       return;
     }
 
     const prevChildCount = (this.state.children || []).length;
     const state = this._getState();
+    state.baseX = x;
+    state.baseY = y;
 
     this.setState(
       state,
@@ -269,7 +271,7 @@ export default class GoogleMapMarkers extends Component {
         );
 
         const transitionString = 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms';
-        const transformString = `translate(${pt.x}px, ${pt.y}px)`;
+        const transformString = `translate(${this.state.baseX + pt.x}px, ${this.state.baseY + pt.y}px)`;
         const stylePtPos = {
           WebkitTransition: transitionString,
           MozTransition: transitionString,
