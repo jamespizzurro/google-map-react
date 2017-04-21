@@ -572,7 +572,7 @@ export default class GoogleMap extends Component {
             const div = document.createElement('div');
             this.div = div;
             div.style.backgroundColor = 'transparent';
-            div.style.position = 'absolute';
+            div.style.position = 'relative';
             div.style.left = '0px';
             div.style.top = '0px';
             div.style.width = K_MAX_WIDTH; // prevents some chrome draw defects
@@ -628,8 +628,8 @@ export default class GoogleMap extends Component {
               this_.googleApiLoadedCalled_ = true;
             }
 
-            //div.style.left = `${ptxRounded.x}px`;
-            //div.style.top = `${ptxRounded.y}px`;
+            div.style.left = `${ptxRounded.x}px`;
+            div.style.top = `${ptxRounded.y}px`;
             if (this_.markersDispatcher_) {
               this_.markersDispatcher_.emit('kON_CHANGE', ptxRounded.x, ptxRounded.y);
             }
@@ -717,8 +717,8 @@ export default class GoogleMap extends Component {
           this._onChildMouseMove();
 
           this_.dragTime_ = 0;
-          //div.style.left = `${ptxRounded.x}px`;
-          //div.style.top = `${ptxRounded.y}px`;
+          div.style.left = `${ptxRounded.x}px`;
+          div.style.top = `${ptxRounded.y}px`;
           if (this_.markersDispatcher_) {
             this_.markersDispatcher_.emit('kON_CHANGE', ptxRounded.x, ptxRounded.y);
             if (this_.fireMouseEventOnIdle_) {
